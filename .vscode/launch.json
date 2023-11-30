@@ -1,0 +1,67 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            // "request":"attach",
+            // "processId": "${command:pickProcess}", 
+            "program": "${workspaceFolder}/install/cyclesphi33_gpu/bin/blender_client",
+            // "program": "${workspaceFolder}/install/cyclesphi33_gpu/bin/blender_client",
+            "args": ["--allow-run-as-root","-env"," DEBUG_SAMPLES=1024"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [ {
+                "name": "ROOT",
+                "value": "${workspaceFolder}"
+            },
+            {
+                "name": "DEBUG_SAMPLES",
+                "value": "10"
+            },
+            {
+                "name": "KERNEL_CUDA_CUBIN",
+                "value": "${workspaceFolder}/install/cyclesphi33_gpu/lib/kernel_sm_80.cubin"
+            },
+            {
+                "name": "LD_LIBRARY_PATH",
+                "value": "${workspaceFolder}/install/cyclesphi33_gpu/lib"
+            },
+            // {
+            //     "name": "DEBUG_STEP_SAMPLES",
+            //     "value": "0"
+            // },
+            {
+                "name": "CLIENT_FILE_CYCLES_BMP",
+                "value": "${workspaceFolder}/data/cache.bmp"
+            },
+            {
+                "name": "CLIENT_FILE_CYCLES_BUFFER",
+                "value": "${workspaceFolder}/data/cache.bf"
+            },
+            {
+                "name": "CLIENT_FILE_KERNEL_GLOBAL",
+                "value": "${workspaceFolder}/data/cache.kg"
+            }],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+
+    ]
+}
